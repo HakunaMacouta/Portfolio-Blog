@@ -8,7 +8,7 @@ cache:
 
 before_install:
 - npm prune
-- npm i @vue/cli-service
+- npm i @vue/cli
 
 script:
 - npm run build
