@@ -5,8 +5,8 @@ node_js:
 script:
 - npm run build
 
-before_install:
-- npm install -g @vue/cli
+before_script:
+- npm install @vue/cli
 
 env:
   global:
