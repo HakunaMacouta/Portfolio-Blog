@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  'lts/*'
+
+cache:
+  directories:
+  - node_modules
+
+before_install:
+- npm prune
+
+script:
+  - npm run test:unit
+  - npm run build
+
+env:
+  global:
+    - NODE_ENV=production
