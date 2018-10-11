@@ -4,10 +4,12 @@
 </template>
 
 <script>
-import * as Three from 'three'
-import { MTLLoader, OBJLoader } from 'three-obj-mtl-loader'
+import * as Three from 'three-full'
+import { WebGL } from '../mixins'
+
 export default {
   name: 'home',
+  mixins: [WebGL],
   data() {
     return {
       camera: null,
@@ -18,8 +20,7 @@ export default {
   },
   methods: {
     init: function() {
-      let container = document.getElementById('home')
-      console.log(container.clientHeight)
+      let container = this.$el
       this.camera = new Three.PerspectiveCamera(70, container.clientWidth / container.clientHeight, 0.01, 10)
       this.camera.position.z = 1
 
@@ -40,7 +41,7 @@ export default {
       this.mesh = new Three.Mesh(geometry, material)
       this.scene.add(this.mesh)
 
-      this.renderer = new Three.WebGLRenderer({ antialias: true })
+      this.renderer = this.rightRenderer({ antialias: true })
       this.renderer.setSize(container.clientWidth, container.clientHeight)
       container.appendChild(this.renderer.domElement)
     },
