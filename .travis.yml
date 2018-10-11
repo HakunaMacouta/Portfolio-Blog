@@ -8,11 +8,11 @@ cache:
 
 before_install:
 - npm prune
+- npm i @vue/cli-service
 
 script:
-  - npm run test:unit
-  - npm run build
+- npm run build
 
 env:
   global:
-    - NODE_ENV=production
+  - NODE_ENV=production
