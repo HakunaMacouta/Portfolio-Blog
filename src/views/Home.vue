@@ -24,10 +24,10 @@ export default {
       this.camera = new Three.PerspectiveCamera(70, container.clientWidth / container.clientHeight, 0.01, 10)
       this.camera.position.z = 1
 
-      let manager = new Three.LoadingManager()
-      manager.onProgress = function(item, loaded, total) {
-        console.log((loaded / total * 100) + '%')
-      }
+      // let manager = new Three.LoadingManager()
+      // manager.onProgress = function(item, loaded, total) {
+      //   console.log((loaded / total * 100) + '%')
+      // }
 
       this.scene = new Three.Scene()
       // let loader = new OBJLoader(manager)
