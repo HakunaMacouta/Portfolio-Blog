@@ -16,7 +16,7 @@ script:
 deploy:
   provider: pages
   skip_cleanup: true
-  base_url: 'https://hakunamacouta.github.io/Portfolio-Blog/'
+  base_url: '/Portfolio-Blog'
   github-token: $GITHUB_KEY
   keep-history: true
   local-dir: '/dist'
