@@ -3,8 +3,8 @@
 </template>
 
 <style lang="scss">
-  body, html {
-    height: 100%;
-    min-height: 100%;
-  }
+  body, html, #home, canvas {
+    height: 100vh;
+    overflow: hidden; }
+
 </style>
