@@ -13,14 +13,15 @@ script:
 - npm run test:unit
 - npm run build
 
+before_deploy:
+- sed -i -e "s/src=\\//src=/g" dist/index.html
+- sed -i -e "s/href=\\//href=/g" dist/index.html
+
 deploy:
   provider: pages
   skip_cleanup: true
-  base_url: '/Portfolio-Blog'
   github-token: $GITHUB_KEY
   keep-history: false
   local-dir: '/dist'
-  verbose: true
-  fqdn: 'https://hakunamacouta.github.io/Portfolio-Blog/'
   on:
     branch: dev
