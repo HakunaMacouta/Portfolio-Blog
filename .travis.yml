@@ -18,7 +18,9 @@ deploy:
   skip_cleanup: true
   base_url: '/Portfolio-Blog'
   github-token: $GITHUB_KEY
-  keep-history: true
+  keep-history: false
   local-dir: '/dist'
+  verbose: true
+  fqdn: 'https://hakunamacouta.github.io/Portfolio-Blog/'
   on:
     branch: dev
