@@ -2,17 +2,23 @@ language: node_js
 node_js:
   'node'
 
+addons:
+  apt:
+    packages:
+    - libcairo2-dev
+    - libjpeg-dev
+    - libgif-dev
+
 script:
+- npm run test:unit
 - npm run build
 
 deploy:
   provider: pages
   skip_cleanup: true
-  base_url: 'https://hakunamacouta.github.io/Portfolio-Blog/' 
+  base_url: 'https://hakunamacouta.github.io/Portfolio-Blog/'
   github-token: $GITHUB_KEY
   keep-history: true
-  committer-from-gh: true
-  project-name: 'Portfolio-Blog'
   local-dir: '/dist'
   on:
     branch: dev

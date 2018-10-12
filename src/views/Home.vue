@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import * as Three from 'three-full'
+import * as Three from '../../node_modules/three-full/builds/Three.es.min'
 import { WebGL } from '../mixins'
 
 export default {

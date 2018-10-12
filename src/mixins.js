@@ -1,4 +1,4 @@
-import { WebGLRenderer, CanvasRenderer } from 'three-full'
+import { WebGLRenderer, CanvasRenderer } from '../node_modules/three-full/builds/Three.es.min'
 
 let WebGL = {
   methods: {
