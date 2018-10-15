@@ -9,64 +9,53 @@ import { WebGL } from '../mixins'
 
 export default {
   name: 'home',
-  mixins: [WebGL],
-  data() {
+  data: function() {
     return {
-      camera: null,
-      scene: null,
-      renderer: null,
-      mesh: null
+      meshes: []
     }
   },
+  mixins: [WebGL],
   methods: {
-    init: function() {
-      let container = this.$el
-      this.camera = new Three.PerspectiveCamera(70, container.clientWidth / container.clientHeight, 0.01, 10)
-      this.camera.position.z = 1
-
-      // let manager = new Three.LoadingManager()
-      // manager.onProgress = function(item, loaded, total) {
-      //   console.log((loaded / total * 100) + '%')
-      // }
-
-      this.scene = new Three.Scene()
-      // let loader = new OBJLoader(manager)
-      // loader.load('@/assets/models/column.obj', (object) => {
-      //   console.log('loaded')
-      // })
-
-      let geometry = new Three.BoxGeometry(0.2, 0.2, 0.2)
-      let material = new Three.MeshNormalMaterial()
-
-      this.mesh = new Three.Mesh(geometry, material)
-      this.scene.add(this.mesh)
-
-      this.renderer = this.rightRenderer({ antialias: true })
-      this.renderer.setSize(container.clientWidth, container.clientHeight)
-      container.appendChild(this.renderer.domElement)
+    initLoading: function() {
+      this.manager.onStart = function(url, itemsLoaded, itemsTotal) {
+        console.log('Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.')
+      }
+      this.manager.onLoad = function() {
+        console.log('Loading complete!')
+      }
+      this.manager.onProgress = function(url, itemsLoaded, itemsTotal) {
+        console.log('Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.')
+      }
+      this.manager.onError = function(url) {
+        console.log('There was an error loading ' + url)
+      }
     },
+    initObjects: function() {
+      let light = new Three.AmbientLight(0x404040)
+      this.scene.add(light)
+      this.MTLLoader.load('/models/3grace/3grace.mtl', (materials) => {
+        materials.preload()
+        this.OBJLoader
+          .setMaterials(materials)
+          .load('/models/3grace/3grace.obj', (object) => {
+            this.scene.add(object)
+          }, null, null)
+      })
+    },
+    /**
+     * animate Three.js canvas
+     */
     animate: function() {
       requestAnimationFrame(this.animate)
-      this.mesh.rotation.x += 0.01
-      this.mesh.rotation.y += 0.02
       this.renderer.render(this.scene, this.camera)
-    },
-    resizeWindow: function() {
-      this.camera.aspect = window.innerWidth / window.innerHeight
-      this.camera.updateProjectionMatrix()
-      this.renderer.setSize(window.innerWidth, window.innerHeight)
     }
   },
   mounted() {
-    this.init()
-    window.addEventListener('resize', this.resizeWindow)
+    this.init(this.$el)
+    this.axesHelper(5)
+    this.initLoading()
+    this.initObjects()
     this.animate()
   }
 }
 </script>
-
-<style lang="scss">
-  #home {
-    height: 100%;
-  }
-</style>
