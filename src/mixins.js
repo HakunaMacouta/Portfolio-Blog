@@ -1,10 +1,11 @@
-import { Scene, PerspectiveCamera, WebGLRenderer, CanvasRenderer, LoadingManager, OBJLoader, MTLLoader, AxesHelper } from '../node_modules/three-full/builds/Three.es.min'
+import { Scene, PerspectiveCamera, WebGLRenderer, CanvasRenderer, LoadingManager, OBJLoader, MTLLoader, AxesHelper, OrbitControls} from '../node_modules/three-full/builds/Three.es.min'
 
 let WebGL = {
   data: function() {
     return {
       camera: null,
       scene: new Scene(),
+      controls: null,
       renderer: null,
       manager: new LoadingManager(),
       OBJLoader: null,
@@ -19,6 +20,7 @@ let WebGL = {
     init: function(container) {
       this.camera = new PerspectiveCamera(70, container.clientWidth / container.clientHeight, 1, 10000)
       this.camera.position.set(0, 20, 100)
+      this.controls = new OrbitControls(this.camera)
       this.OBJLoader = new OBJLoader(this.manager)
       this.MTLLoader = new MTLLoader(this.manager)
       this.renderer = this.rightRenderer({ antialias: true })
