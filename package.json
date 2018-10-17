@@ -9,6 +9,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "buttercms": "^1.1.1",
     "normalize.css": "^8.0.0",
     "three-full": "^11.3.2",
     "vue": "^2.5.17",

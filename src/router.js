@@ -15,9 +15,14 @@ export default new Router({
       component: loadView('Home')
     },
     {
-      path: '/',
+      path: '/blog',
       name: 'blog',
       component: loadView('Blog')
+    },
+    {
+      path: '/blog/:slug',
+      name: 'blog-page',
+      component: loadView('BlogPage')
     }
     // {
     //   path: '/about',
