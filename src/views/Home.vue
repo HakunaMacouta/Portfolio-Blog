@@ -1,22 +1,41 @@
 <template>
   <div id="home">
+    <div class="ui-wrapper">
+      <div class="input">tomtom@pc$:/</div>
+    </div>
   </div>
 </template>
 
 <script>
 import * as Three from '../../node_modules/three-full/builds/Three.es.min'
-import { WebGL } from '../mixins'
-
 export default {
   name: 'home',
   data: function() {
     return {
-      meshes: []
+      camera: null,
+      scene: new Three.Scene(),
+      controls: null,
+      renderer: null,
+      composer: null,
+      manager: new Three.LoadingManager(),
+      OBJLoader: null,
+      MTLLoader: null
     }
   },
-  mixins: [WebGL],
   methods: {
-    initLoading: function() {
+    init: function() {
+      this.camera = new Three.PerspectiveCamera(70, this.innerWidth / this.innerHeight, 1, 10000)
+      this.scene.background = new Three.Color(0xf0f0f0)
+      this.camera.position.set(0, 5, 20)
+      this.controls = new Three.OrbitControls(this.camera)
+      this.OBJLoader = new Three.OBJLoader(this.manager)
+      this.MTLLoader = new Three.MTLLoader(this.manager)
+      this.renderer = this.rightRenderer({ antialias: true })
+      this.renderer.setSize(this.innerWidth, this.innerHeight)
+      this.$el.appendChild(this.renderer.domElement)
+      window.addEventListener('resize', this.resizeWindow)
+    },
+    initLoading() {
       this.manager.onStart = function(url, itemsLoaded, itemsTotal) {
         console.log('Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.')
       }
@@ -30,33 +49,93 @@ export default {
         console.log('There was an error loading ' + url)
       }
     },
-    initObjects: function() {
-      let light = new Three.AmbientLight(0x404040)
-      this.scene.add(light)
-      this.MTLLoader.load('/models/3grace/3grace.mtl', (materials) => {
-        materials.preload()
-        this.OBJLoader
-          .setMaterials(materials)
-          .load('/models/3grace/3grace.obj', (object) => {
-            this.scene.add(object)
-          }, null, null)
-      })
+    initObjects() {
     },
-    /**
-     * animate Three.js canvas
-     */
-    animate: function() {
+    initShaders() {
+      let effect = null
+      this.composer = new Three.EffectComposer(this.renderer)
+      this.composer.addPass(new Three.RenderPass(this.scene, this.camera))
+      /* Film Shader */
+      effect = new Three.FilmPass(0.35, 0.025, 648, false)
+      this.composer.addPass(effect)
+      /* Vignette Shader */
+      effect = new Three.ShaderPass(Three.VignetteShader)
+      effect.uniforms[ 'offset' ].value = 0.95
+      effect.uniforms[ 'darkness' ].value = 1.6
+      this.composer.addPass(effect)
+      /* RGB Shader */
+      effect = new Three.ShaderPass(Three.RGBShiftShader)
+      effect.uniforms[ 'amount' ].value = 0.0015
+      effect.renderToScreen = true
+      this.composer.addPass(effect)
+    },
+    resizeWindow: function() {
+      console.log('ResizeWindow')
+      this.camera.aspect = this.innerWidth / this.innerHeight
+      this.camera.updateProjectionMatrix()
+      this.renderer.setSize(this.innerWidth, this.innerHeight)
+    },
+    rightRenderer: function(parameters) {
+      let canvas = document.createElement('canvas')
+
+      let gl = canvas.getContext('webgl') ||
+        canvas.getContext('experimental-webgl')
+
+      return gl && gl instanceof WebGLRenderingContext
+        ? new Three.WebGLRenderer(parameters)
+        : new Three.CanvasRenderer(parameters)
+    },
+    axesHelper: function(size) {
+      this.scene.add(new Three.AxesHelper(size))
+    },
+    gridHelper: function(size, division) {
+      this.scene.add(new Three.GridHelper(size, division))
+    },
+    animate() {
       requestAnimationFrame(this.animate)
-      this.controls.update()
-      this.renderer.render(this.scene, this.camera)
+      this.camera.updateProjectionMatrix()
+      this.composer.render()
+      // this.renderer.render(this.scene, this.camera)
+    }
+  },
+  computed: {
+    innerWidth() {
+      return this.$el.clientWidth - 40
+    },
+    innerHeight() {
+      return this.$el.clientHeight - 40
     }
   },
   mounted() {
-    this.init(this.$el)
-    this.axesHelper(5)
-    this.initLoading()
-    this.initObjects()
+    this.init()
+    this.initShaders()
+    this.axesHelper(20)
+    this.gridHelper(40, 40)
     this.animate()
   }
 }
 </script>
+
+<style lang="scss">
+  @font-face { font-family: 'Welbut'; src: url('/fonts/welbut.ttf'); }
+  * { margin:0; padding:0; }
+  * { box-sizing: border-box; }
+  body, html, #home { max-height:100%; height: 100%; overflow: hidden}
+  body { background: #191919 }
+  canvas {
+    display: block;
+    margin:20px;
+    position: absolute;
+  }
+  .ui-wrapper {
+    display: flex;
+    position: absolute;
+    height: 100%;
+    margin:20px;
+    padding:10px;
+    z-index: 1;
+    letter-spacing: 2px;
+    font-family: 'Welbut', Helvetica, sans-serif;
+    text-shadow: -2px 0 1px #1EF2F1 , 3px 0 1px #F6050A ;
+  }
+</style>
