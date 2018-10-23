@@ -10,7 +10,6 @@ addons:
     - libgif-dev
 
 script:
-- npm run test:unit
 - npm run build
 
 deploy:
