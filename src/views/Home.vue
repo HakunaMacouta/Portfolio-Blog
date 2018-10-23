@@ -1,15 +1,15 @@
 <template>
   <div id="home">
-    <div class="ui-wrapper">
-      <div class="input">tomtom@pc$:/</div>
-    </div>
+    <terminal></terminal>
   </div>
 </template>
 
 <script>
 import * as Three from '../../node_modules/three-full/builds/Three.es.min'
+import Terminal from '../components/Terminal'
 export default {
   name: 'home',
+  components: { Terminal },
   data: function() {
     return {
       camera: null,
@@ -120,22 +120,11 @@ export default {
   @font-face { font-family: 'Welbut'; src: url('/fonts/welbut.ttf'); }
   * { margin:0; padding:0; }
   * { box-sizing: border-box; }
-  body, html, #home { max-height:100%; height: 100%; overflow: hidden}
+  body, html, #home { max-height:100%; height: 100%;}
   body { background: #191919 }
   canvas {
     display: block;
     margin:20px;
     position: absolute;
-  }
-  .ui-wrapper {
-    display: flex;
-    position: absolute;
-    height: 100%;
-    margin:20px;
-    padding:10px;
-    z-index: 1;
-    letter-spacing: 2px;
-    font-family: 'Welbut', Helvetica, sans-serif;
-    text-shadow: -2px 0 1px #1EF2F1 , 3px 0 1px #F6050A ;
   }
 </style>
