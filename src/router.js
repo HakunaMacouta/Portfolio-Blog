@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
+import Home from '@/views/Home.vue'
+import Blog from '@/views/Blog.vue'
+import BlogPage from '@/views/BlogPage.vue'
 Vue.use(Router)
 
 function loadView(view) {
@@ -12,17 +14,17 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: loadView('Home')
+      component: Home
     },
     {
       path: '/blog',
       name: 'blog',
-      component: loadView('Blog')
+      component: Blog
     },
     {
       path: '/blog/:slug',
       name: 'blog-page',
-      component: loadView('BlogPage')
+      component: BlogPage
     }
     // {
     //   path: '/about',
