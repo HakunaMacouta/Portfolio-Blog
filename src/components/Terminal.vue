@@ -1,18 +1,86 @@
 <template>
  <div class="ui-wrapper">
-   <div class="input">macouta@website $:/ <span class="typewriting"></span><span class="blinking-cursor">_</span></div>
+   <div class="input">
+     <div>
+       macouta@website $:/ <span class="typewriting"></span><span class="blinking-cursor">_</span>
+     </div>
+   </div>
+   <ul class="nav">
+     <li v-for="entry in this.menuEntries" @click="entryClicked(entry)"  @mouseover="hovered(entry)">
+       > {{ entry.title }}
+     </li>
+   </ul>
+   <div class="call-to-action">MacoutaOS - </div>
  </div>
 </template>
 
 <script>
 export default {
-  name: 'terminal'
+  name: 'terminal',
+  data: function() {
+    return {
+      menuDisplayed: true,
+      menuEntries: [
+        {
+          id: 0,
+          title: 'About'
+        },
+        {
+          id: 1,
+          title: 'Blog'
+        },
+        {
+          id: 2,
+          title: 'Portfolio'
+        },
+        {
+          id: 3,
+          title: 'Games'
+        },
+        {
+          id: 4,
+          title: 'Social Networks'
+        }
+      ]
+    }
+  },
+  methods: {
+    toggleMenu() {
+      this.$el.querySelector('.nav').style.display = this.menuDisplayed ? 'none' : 'block'
+      this.menuDisplayed = !this.menuDisplayed
+    },
+    entryClicked(entry) {
+      console.log('entry clicked', entry)
+      switch (entry.id) {
+        case 0:
+          this.toggleMenu()
+          break
+        case 1:
+          break
+        case 2:
+          break
+        case 4:
+          this.toggleMenu()
+          break
+        default:
+          break
+      }
+    },
+    hovered(entry) {
+      console.log('entry hover', entry.title)
+      this.$emit('entry-hover', entry)
+    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
   $blueShift: rgba(0,30,255,0.5);
+  $blueShift: #C487C2;
+  //$blueShift: rgba(30,242,241,0.8);
   $redShift: rgba(255,0,80,0.3);
+  $redShift: #9efffd;
+  //$redShift: rgba(246,5,10,0.8);
   @keyframes textShadow {
     0% {
       text-shadow: 0.4389924193300864px 0 1px $blueShift, -0.4389924193300864px 0 1px $redShift, 0 0 3px;
@@ -81,14 +149,18 @@ export default {
   .ui-wrapper {
     display: flex;
     flex-direction: column-reverse;
+    justify-content: space-between;
     position: absolute;
     max-height: 100%;
     height: 100vh;
     padding:30px;
     z-index: 1;
     letter-spacing: 1px;
+    font-size:22px;
     font-family: 'Welbut', Helvetica, sans-serif;
-    animation: textShadow 1.6s infinite;
+    & .input { animation: textShadow 5s infinite; }
+    & .nav { animation: textShadow 10s infinite; }
+    & .call-to-action { animation: textShadow 20s infinite; }
   }
   @keyframes blink {
     0% {
@@ -100,5 +172,12 @@ export default {
   }
   .blinking-cursor {
     animation: blink 2s step-end infinite;
+  }
+  .nav {
+    display: block;
+    margin:20px 20px;
+    list-style: none;
+    & li { padding : 20px; cursor: pointer }
+    & li:hover { text-decoration: underline }
   }
 </style>

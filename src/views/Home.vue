@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <terminal></terminal>
+    <terminal v-on:entry-hover="entryHovered"></terminal>
   </div>
 </template>
 
@@ -18,8 +18,10 @@ export default {
       renderer: null,
       composer: null,
       manager: new Three.LoadingManager(),
-      OBJLoader: null,
-      MTLLoader: null
+      GLTFLoader: null,
+      glitch: new Three.GlitchPass(),
+      glitchDisplayed: false,
+      object: null
     }
   },
   methods: {
@@ -28,12 +30,13 @@ export default {
       this.scene.background = new Three.Color(0xf0f0f0)
       this.camera.position.set(0, 5, 20)
       this.controls = new Three.OrbitControls(this.camera)
-      this.OBJLoader = new Three.OBJLoader(this.manager)
-      this.MTLLoader = new Three.MTLLoader(this.manager)
+      this.GLTFLoader = new Three.GLTFLoader(this.manager)
       this.renderer = this.rightRenderer({ antialias: true })
       this.renderer.setSize(this.innerWidth, this.innerHeight)
       this.$el.appendChild(this.renderer.domElement)
       window.addEventListener('resize', this.resizeWindow)
+      this.scene.fog = new Three.FogExp2(0x191919, 0.0128)
+      this.renderer.setClearColor(0x000000)
     },
     initLoading() {
       this.manager.onStart = function(url, itemsLoaded, itemsTotal) {
@@ -49,25 +52,37 @@ export default {
         console.log('There was an error loading ' + url)
       }
     },
-    initObjects() {
+    initObjects: function() {
+      this.scene.add(new Three.AmbientLight(0xffffff))
+      this.GLTFLoader.load('/models/wounded_amazon/scene.gltf',
+        (object) => {
+          this.object = object.scene.children[0]
+          this.object.scale.set(4, 4, 4)
+          this.object.position.y = 4
+          this.scene.add(this.object)
+        })
     },
     initShaders() {
       let effect = null
       this.composer = new Three.EffectComposer(this.renderer)
       this.composer.addPass(new Three.RenderPass(this.scene, this.camera))
       /* Film Shader */
-      effect = new Three.FilmPass(0.35, 0.025, 648, false)
+      effect = new Three.FilmPass(0.2, 0.06, 618, false)
+      effect.uniforms[ 'time' ].value = 100
       this.composer.addPass(effect)
       /* Vignette Shader */
       effect = new Three.ShaderPass(Three.VignetteShader)
-      effect.uniforms[ 'offset' ].value = 0.95
-      effect.uniforms[ 'darkness' ].value = 1.6
+      effect.uniforms[ 'offset' ].value = 1
+      effect.uniforms[ 'darkness' ].value = 1.7
       this.composer.addPass(effect)
       /* RGB Shader */
       effect = new Three.ShaderPass(Three.RGBShiftShader)
       effect.uniforms[ 'amount' ].value = 0.0015
       effect.renderToScreen = true
       this.composer.addPass(effect)
+      /* Glitch Shader */
+      this.glitch.goWild = true
+      this.composer.addPass(this.glitch)
     },
     resizeWindow: function() {
       console.log('ResizeWindow')
@@ -91,11 +106,24 @@ export default {
     gridHelper: function(size, division) {
       this.scene.add(new Three.GridHelper(size, division))
     },
+    entryHovered(entry) {
+      this.glitch.renderToScreen = true
+      if (!this.glitchDisplayed) {
+        setTimeout(() => {
+          this.glitch.renderToScreen = false
+          this.glitchDisplayed = false
+        }, 500)
+      }
+      this.glitchDisplayed = true
+    },
     animate() {
       requestAnimationFrame(this.animate)
       this.camera.updateProjectionMatrix()
-      this.composer.render()
-      // this.renderer.render(this.scene, this.camera)
+      if (this.object) {
+        this.object.children[0].rotateOnWorldAxis(new Three.Vector3(0, 0, 1), 0.02)
+      }
+      // this.composer.render()
+      this.renderer.render(this.scene, this.camera)
     }
   },
   computed: {
@@ -109,8 +137,9 @@ export default {
   mounted() {
     this.init()
     this.initShaders()
-    this.axesHelper(20)
-    this.gridHelper(40, 40)
+    this.initObjects()
+    // this.axesHelper(20)
+    this.gridHelper(800, 200)
     this.animate()
   }
 }
