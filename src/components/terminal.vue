@@ -2,46 +2,41 @@
  <div class="ui-wrapper">
    <div class="input">
      <div>
-       macouta@website $:/ <span class="typewriting"></span><span class="blinking-cursor">_</span>
+       macouta@website $:/<span class="typewriting"></span><span class="blinking-cursor">_</span>
      </div>
+     <component v-if="currentEntry" v-bind:is="currentEntryComponent"/>
    </div>
    <ul class="nav">
-     <li v-for="entry in this.menuEntries" @click="entryClicked(entry)"  @mouseover="hovered(entry)">
-       > {{ entry.title }}
+     <li v-for="(entry, key) in $store.state.entries" @click="entryClicked(entry, key)">
+       <span  @mouseover="hovered(entry)">> {{ entry.title }}</span>
      </li>
    </ul>
-   <div class="call-to-action">MacoutaOS - </div>
+   <div class="call-to-action">MacoutaOS - <span class="boot-message">Booting...</span></div>
  </div>
 </template>
 
 <script>
+import about from './terminal-about'
+import blog from './terminal-blog'
+import portfolio from './terminal-portfolio'
+import game from './terminal-game'
+import social from './terminal-social'
+import credit from './terminal-credit'
 export default {
   name: 'terminal',
+  components: {
+    'terminal-about': about,
+    'terminal-blog': blog,
+    'terminal-portfolio': portfolio,
+    'terminal-game': game,
+    'terminal-social': social,
+    'terminal-credit': credit
+  },
   data: function() {
     return {
       menuDisplayed: true,
-      menuEntries: [
-        {
-          id: 0,
-          title: 'About'
-        },
-        {
-          id: 1,
-          title: 'Blog'
-        },
-        {
-          id: 2,
-          title: 'Portfolio'
-        },
-        {
-          id: 3,
-          title: 'Games'
-        },
-        {
-          id: 4,
-          title: 'Social Networks'
-        }
-      ]
+      currentEntry: null,
+      typewritingCpt: 0
     }
   },
   methods: {
@@ -49,26 +44,43 @@ export default {
       this.$el.querySelector('.nav').style.display = this.menuDisplayed ? 'none' : 'block'
       this.menuDisplayed = !this.menuDisplayed
     },
-    entryClicked(entry) {
-      console.log('entry clicked', entry)
-      switch (entry.id) {
-        case 0:
-          this.toggleMenu()
-          break
-        case 1:
-          break
-        case 2:
-          break
-        case 4:
-          this.toggleMenu()
-          break
-        default:
-          break
-      }
+    typewritingEffect: function(selector, string, speed, cpt = 0) {
+      return new Promise((resolve, reject) => {
+        if (cpt < string.length) {
+          this.$el.querySelector(selector).innerHTML += string.charAt(cpt)
+          setTimeout(() => {
+            this.typewritingEffect(selector, string, speed, ++cpt).then(resolve)
+          }, speed)
+        } else {
+          resolve()
+        }
+      })
+    },
+    entryClicked(entry, key) {
+      // this.toggleMenu()
+      this.$el.querySelector('.typewriting').innerHTML = ''
+      this.typewritingEffect('.typewriting', 'run ' + key + '.exe', 200)
+        .then(() => {
+          this.currentEntry = key
+        })
     },
     hovered(entry) {
-      console.log('entry hover', entry.title)
       this.$emit('entry-hover', entry)
+    }
+  },
+  computed: {
+    loading() {
+      return this.$store.state.loading
+    },
+    currentEntryComponent() {
+      return 'terminal-' + this.currentEntry
+    }
+  },
+  watch: {
+    loading(newValue) {
+      let message = newValue ? 'Booting...' : 'Welcome ! \n Choose your destiny...'
+      this.$el.querySelector('.boot-message').innerHTML = ''
+      this.typewritingEffect('.boot-message', message, 100)
     }
   }
 }
@@ -156,7 +168,7 @@ export default {
     padding:30px;
     z-index: 1;
     letter-spacing: 1px;
-    font-size:22px;
+    font-size:18px;
     font-family: 'Welbut', Helvetica, sans-serif;
     & .input { animation: textShadow 5s infinite; }
     & .nav { animation: textShadow 10s infinite; }
@@ -177,7 +189,7 @@ export default {
     display: block;
     margin:20px 20px;
     list-style: none;
-    & li { padding : 20px; cursor: pointer }
-    & li:hover { text-decoration: underline }
+    & li { width: 100%; padding : 20px; cursor: pointer }
+    & li span:hover { text-decoration: underline }
   }
 </style>
