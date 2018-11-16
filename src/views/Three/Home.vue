@@ -166,7 +166,7 @@ export default {
   @font-face { font-family: 'Welbut'; src: url('/fonts/welbut.ttf'); }
   * { margin:0; padding:0; }
   * { box-sizing: border-box; }
-  body, html, #home { max-height:100%; height: 100%;}
+  body, html, #home { max-height:100%; height: 100%; }
   body { background: #191919 }
   /*#video { display: none }*/
   canvas {

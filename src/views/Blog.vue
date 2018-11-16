@@ -4,32 +4,7 @@
       <section class="section">
         <h1>Recent posts</h1>
         <div class="posts">
-          <div class="post-thumb" v-for="(post,index) in posts" :key="post.slug + '_' + index">
-            <article>
-              <div class="columns">
-                <div class="column is-one-third">
-                  <figure class="image is-128x128">
-                    <!-- Bind results using a ':' -->
-                    <!-- Use a v-if/else if their is a featured_image -->
-                    <img v-if="post.featured_image" :src="post.featured_image" alt="">
-                    <img v-else src="http://via.placeholder.com/250x250" alt="">
-                  </figure>
-                </div>
-                <header class="column is-two-thirds">
-                  <router-link class="post-title" :to="'/blog/' + post.slug"><h2>{{ post.title }}</h2></router-link>
-                  <p> {{ post.author.first_name + " " + post.author.last_name }}</p>
-                  <p>{{ post.summary }}</p>
-                </header>
-              </div>
-              <footer class="columns">
-                <div class="column">
-                  {{ formatDate(post.published) }}
-                </div>
-                <div class="column">
-                </div>
-              </footer>
-            </article>
-          </div>
+          <blog-thumb class="post-thumb" v-for="post in this.posts" :post="post"></blog-thumb>
         </div>
       </section>
     </div>
@@ -48,18 +23,13 @@
 
 <script>
 import BlogHeader from '../components/common-header'
+import BlogThumb from '../components/blog-thumb'
 export default {
   name: 'blog',
-  components: { BlogHeader },
-  data() {
-    return {
-      posts: []
-    }
-  },
-  methods: {
-    formatDate(str) {
-      let date = new Date(str)
-      return date.getUTCMonth()
+  components: { BlogThumb, BlogHeader },
+  computed: {
+    posts() {
+      return this.$store.state.posts
     }
   }
 }

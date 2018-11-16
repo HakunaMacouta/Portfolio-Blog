@@ -33,7 +33,6 @@ export default new Vuex.Store({
         .then(function(res) {
           context.commit('blogPosts', res.data)
         }).catch(function(res) {
-          console.log(res)
         })
     }
   },

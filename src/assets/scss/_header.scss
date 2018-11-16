@@ -1,3 +1,8 @@
+$blueShift: rgba(0,30,255,0.5);
+$blueShift: #C487C2;
+//$blueShift: rgba(30,242,241,0.8);
+$redShift: rgba(255,0,80,0.3);
+$redShift: #9efffd;
 
 .bg-img {
   max-width: 100%;
@@ -10,16 +15,24 @@
   margin:auto;
   text-align:center;
   & p:nth-child(1) {
+    font-family: 'VCR', serif;
+    font-size: 1.3rem;
     color:black;
   }
   & p:nth-child(2) {
+    font-size: 1.2rem;
     color:white;
   }
   & p:nth-child(3) {
-    color:red;
+    letter-spacing: 4px;
+    font-family: Times New Roman, serif;
+    color: #ffb0fa;
   }
 }
-
+.navbar-item {
+  font-family: 'VCR', serif;
+  letter-spacing: 2px;
+}
 .router-link-exact-active {
   text-decoration: underline;
 }
@@ -44,7 +57,6 @@
     transform: rotateY(360deg);
   }
 }
-
 
 $navbar-background-color: $pink;
 $navbar-item-color: #000000;

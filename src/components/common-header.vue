@@ -18,15 +18,13 @@
         </div>
         <div class="navbar-menu">
           <div class="navbar-start">
-            <router-link to="/" class="navbar-item">Home</router-link>
+            <router-link to="/" class="navbar-item">HOME</router-link>
             <div class="navbar-item is-hidden-mobile">/</div>
-            <router-link to="/about" class="navbar-item">About</router-link>
+            <router-link to="/about" class="navbar-item">ABOUT</router-link>
             <div class="navbar-item is-hidden-mobile">/</div>
-            <router-link to="/work" class="navbar-item">Work</router-link>
+            <router-link to="/work" class="navbar-item">WORK</router-link>
             <div class="navbar-item is-hidden-mobile">/</div>
-            <router-link to="/contact" class="navbar-item">Contact</router-link>
-            <div class="navbar-item is-hidden-mobile">/</div>
-            <router-link to="/blog" class="navbar-item">Blog</router-link>
+            <router-link to="/blog" class="navbar-item">BLOG</router-link>
           </div>
           <div class="navbar-end">
             <template v-for="(network, index) in this.$store.state.networks">
@@ -54,7 +52,6 @@ export default {
       let icons = this.$el.querySelectorAll('.svg-icon')
       icons.forEach(function(icon) {
         let rnd = 8 - ((Math.random() * (4)) + -2)
-        console.log(rnd)
         icon.style.setProperty('--animation-time', rnd + 's')
       })
     }
