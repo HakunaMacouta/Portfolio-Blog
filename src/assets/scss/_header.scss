@@ -1,0 +1,30 @@
+
+.bg-img {
+  max-width: 100%;
+  height: 400px;
+  background: url('../images/raining_men.png') center center;
+  background-size: cover;
+  display:flex;
+}
+.welcome {
+  margin:auto;
+  text-align:center;
+  & p:nth-child(1) {
+    color:black;
+  }
+  & p:nth-child(2) {
+    color:white;
+  }
+  & p:nth-child(3) {
+    color:red;
+  }
+}
+
+$navbar-background-color: $pink;
+$navbar-item-color: #000000;
+$navbar-item-hover-color: $purple;
+$navbar-item-hover-background-color: $pink;
+$navbar-item-active-color: #000000;
+$navbar-item-active-background-color: #000000;
+$navbar-burger-color: #000000;
+

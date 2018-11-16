@@ -1,0 +1,12 @@
+.posts {
+  display: flex;
+  flex-wrap:wrap;
+}
+
+.post-thumb {
+  width:48%;
+  border: 1px dashed #cccccc;
+  padding:20px;
+  margin: 10px;
+}
+
