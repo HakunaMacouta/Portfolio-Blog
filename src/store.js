@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { butter } from './butter'
 
 Vue.use(Vuex)
 
@@ -28,7 +29,12 @@ export default new Vuex.Store({
   },
   actions: {
     blogPosts(context) {
-      context.commit('blogPosts')
+      return butter.post.list({ page: 1, page_size: 10 })
+        .then(function(res) {
+          context.commit('blogPosts', res.data)
+        }).catch(function(res) {
+          console.log(res)
+        })
     }
   },
   getters: {

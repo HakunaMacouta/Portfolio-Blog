@@ -57,22 +57,10 @@ export default {
     }
   },
   methods: {
-    getPosts() {
-      butter.post.list({
-        page: 1,
-        page_size: 10
-      })
-        .then((res) => {
-          this.posts = res.data.data
-        })
-    },
     formatDate(str) {
       let date = new Date(str)
       return date.getUTCMonth()
     }
-  },
-  created() {
-    this.getPosts()
   }
 }
 </script>
