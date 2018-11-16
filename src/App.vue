@@ -10,6 +10,9 @@
 <script>
 import CommonHeader from './components/common-header'
 export default {
-  components: { CommonHeader }
+  components: { CommonHeader },
+  created: {
+  
+  }
 }
 </script>

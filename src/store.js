@@ -6,24 +6,30 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     networks: [
-      { path: 'github.svg',
-        url: 'https://github.com/HakunaMacouta',
+      { path: 'img/networks/github.svg',
+        url: 'https://github.com/Macouta',
         alt: 'github' },
-      { path: 'itchio.svg',
+      { path: 'img/networks/itchio.svg',
         url: 'https://macouta.itch.io',
         alt: 'itchio' },
-      { path: 'linkedin.svg',
+      { path: 'img/networks/linkedin.svg',
         url: 'https://www.linkedin.com/in/thomas-blanc/',
         alt: 'linkedin' },
-      { path: 'twitter.svg',
+      { path: 'img/networks/twitter.svg',
         url: 'https://twitter.com/macouta_',
         alt: 'twitter' }
-    ]
+    ],
+    posts: []
   },
   mutations: {
+    blogPosts(state) {
+      state.posts = 1
+    }
   },
   actions: {
-
+    blogPosts(context) {
+      context.commit('blogPosts')
+    }
   },
   getters: {
   }

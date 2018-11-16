@@ -20,6 +20,32 @@
   }
 }
 
+.router-link-exact-active {
+  text-decoration: underline;
+}
+
+:root {
+  --animation-time: 2s;
+}
+.svg-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  animation: spin var(--animation-time) infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+
 $navbar-background-color: $pink;
 $navbar-item-color: #000000;
 $navbar-item-hover-color: $purple;

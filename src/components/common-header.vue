@@ -19,19 +19,22 @@
         <div class="navbar-menu">
           <div class="navbar-start">
             <router-link to="/" class="navbar-item">Home</router-link>
-            <div class="navbar-item">/</div>
+            <div class="navbar-item is-hidden-mobile">/</div>
             <router-link to="/about" class="navbar-item">About</router-link>
-            <div class="navbar-item">/</div>
+            <div class="navbar-item is-hidden-mobile">/</div>
             <router-link to="/work" class="navbar-item">Work</router-link>
-            <div class="navbar-item">/</div>
+            <div class="navbar-item is-hidden-mobile">/</div>
             <router-link to="/contact" class="navbar-item">Contact</router-link>
-            <div class="navbar-item">/</div>
+            <div class="navbar-item is-hidden-mobile">/</div>
             <router-link to="/blog" class="navbar-item">Blog</router-link>
           </div>
           <div class="navbar-end">
-            <div v-for="network in this.$store.state.networks" class="navbar-item">
-              <a :href="network.url"><img :src="network.path" :alt="network.alt"/></a>
-            </div>
+            <template v-for="(network, index) in this.$store.state.networks">
+              <div class="navbar-item">
+                <a class="svg-icon" :href="network.url"><img :src="network.path" :alt="network.alt"/></a>
+              </div>
+              <div v-if="index < $store.state.networks.length -1" class="navbar-item is-hidden-mobile">/</div>
+            </template>
           </div>
         </div>
       </div>
@@ -46,7 +49,18 @@ export default {
     openMenuMobile() {
       this.$el.querySelector('.navbar-menu').classList.toggle('is-active')
       this.$el.querySelector('.navbar-burger').classList.toggle('is-active')
+    },
+    setDurationProperty() {
+      let icons = this.$el.querySelectorAll('.svg-icon')
+      icons.forEach(function(icon) {
+        let rnd = 8 - ((Math.random() * (4)) + -2)
+        console.log(rnd)
+        icon.style.setProperty('--animation-time', rnd + 's')
+      })
     }
+  },
+  mounted() {
+    this.setDurationProperty()
   }
 }
 </script>
