@@ -1,10 +1,18 @@
 <template>
-  <router-view/>
+  <div>
+    <common-header></common-header>
+    <div class="container">
+      <router-view/>
+    </div>
+  </div>
 </template>
 
-<style lang="scss">
-  body, html, #home, canvas {
-    height: 100vh;
-    overflow: hidden; }
-
-</style>
+<script>
+import CommonHeader from './components/common-header'
+export default {
+  components: { CommonHeader },
+  created: {
+  
+  }
+}
+</script>

@@ -1,11 +1,11 @@
 <template>
-  <div>cc</div>
+
 </template>
 
 <script>
-export default {
-  name: 'Home'
-}
+  export default {
+    name: 'terminal-portfolio'
+  }
 </script>
 
 <style scoped>
