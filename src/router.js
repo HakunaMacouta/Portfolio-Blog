@@ -5,9 +5,9 @@ import Blog from '@/views/Blog.vue'
 import BlogPost from '@/views/BlogPost.vue'
 Vue.use(Router)
 
-function loadView(view) {
-  return () => import(/* webpackChunkName: "view-[request]" */ `@/views/${view}.vue`)
-}
+// function loadView(view) {
+//   return () => import(/* webpackChunkName: "view-[request]" */ `@/views/${view}.vue`)
+// }
 
 export default new Router({
   routes: [

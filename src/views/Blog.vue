@@ -4,7 +4,7 @@
       <section class="section">
         <h1>Recent posts</h1>
         <div class="posts">
-          <blog-thumb class="post-thumb" v-for="post in this.posts" :post="post"></blog-thumb>
+          <blog-thumb class="post-thumb" v-for="(post, index) in this.posts" :key="index" :post="post"></blog-thumb>
         </div>
       </section>
     </div>

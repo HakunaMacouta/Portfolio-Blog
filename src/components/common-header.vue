@@ -28,10 +28,10 @@
           </div>
           <div class="navbar-end">
             <template v-for="(network, index) in this.$store.state.networks">
-              <div class="navbar-item">
+              <div class="navbar-item" :key="index">
                 <a class="svg-icon" :href="network.url"><img :src="network.path" :alt="network.alt"/></a>
               </div>
-              <div v-if="index < $store.state.networks.length -1" class="navbar-item is-hidden-mobile">/</div>
+              <div :key="index" v-if="index < $store.state.networks.length -1" class="navbar-item is-hidden-mobile">/</div>
             </template>
           </div>
         </div>
