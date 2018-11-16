@@ -9,8 +9,15 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.8",
+    "@fortawesome/free-brands-svg-icons": "^5.5.0",
+    "@fortawesome/free-solid-svg-icons": "^5.5.0",
+    "@fortawesome/vue-fontawesome": "^0.1.2",
+    "bulma": "^0.7.2",
     "buttercms": "^1.1.1",
+    "i": "^0.3.6",
     "normalize.css": "^8.0.0",
+    "npm": "^6.4.1",
     "three-full": "^11.3.2",
     "vue": "^2.5.17",
     "vue-disqus": "^3.0.5",

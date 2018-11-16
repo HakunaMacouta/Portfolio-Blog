@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import * as Three from '../../node_modules/three-full/builds/Three.es.min'
-import Terminal from '../components/terminal/terminal'
-import { webGL } from '../mixins'
+import * as Three from '../../../node_modules/three-full/builds/Three.es.min'
+import Terminal from '../../components/terminal/terminal'
+import { webGL } from '../../mixins'
 export default {
   name: 'home',
   mixins: [ webGL ],

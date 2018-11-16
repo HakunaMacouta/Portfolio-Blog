@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home.vue'
 import Blog from '@/views/Blog.vue'
-import BlogPage from '@/views/BlogPage.vue'
+import BlogPost from '@/views/BlogPost.vue'
 Vue.use(Router)
 
 function loadView(view) {
@@ -23,8 +23,8 @@ export default new Router({
     },
     {
       path: '/blog/:slug',
-      name: 'blog-page',
-      component: BlogPage
+      name: 'blog-post',
+      component: BlogPost
     }
     // {
     //   path: '/about',

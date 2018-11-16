@@ -5,6 +5,7 @@ import store from './store'
 import VueDisqus from 'vue-disqus'
 
 import 'normalize.css'
+import '@/assets/scss/all.scss'
 
 Vue.use(VueDisqus)
 
