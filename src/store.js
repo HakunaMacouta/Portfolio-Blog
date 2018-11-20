@@ -23,15 +23,15 @@ export default new Vuex.Store({
     posts: []
   },
   mutations: {
-    blogPosts(state) {
-      state.posts = 1
+    blogPosts(state, posts) {
+      state.posts = posts
     }
   },
   actions: {
     blogPosts(context) {
       return butter.post.list({ page: 1, page_size: 10 })
         .then(function(res) {
-          context.commit('blogPosts', res.data)
+          context.commit('blogPosts', res.data.data)
         }).catch(function(res) {
         })
     }
