@@ -1,15 +1,18 @@
 //* { border:red 1px dotted; }
+
+$background: #191919;
+$pink: #ffb0fa;
+$salmon:#FF819E;
+$purple: #271034;
+$light-blue:#6BFFFF;
 * { margin:0; padding: 0; }
-body, html { background: #191919; min-height: 100% }
+body, html { background: $background; min-height: 100% }
 
 @font-face { font-family: 'VCR'; src: url('/fonts/VCR_OSD_MONO_1.001.ttf'); }
-
-$pink: #ffb0fa;
-$purple: #271034;
-
 @import "misc";
 @import "header";
 @import "blog";
+@import "footer";
 /*! bulma.io v0.7.2 | MIT License | github.com/jgthms/bulma */
 @import "../../../node_modules/bulma/sass/utilities/_all";
 @import "../../../node_modules/bulma/sass/base/_all";
@@ -19,4 +22,8 @@ $purple: #271034;
 @import "../../../node_modules/bulma/sass/layout/_all";
 
 html { overflow-y: auto }
+.rgb-shift {
+  color:white;
+  text-shadow: -.0625rem -.0625rem 0 #6BFFFF, .0625rem .0625rem 0 #FF819E;
+}
 

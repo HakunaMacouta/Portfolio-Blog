@@ -13,13 +13,13 @@
           <p>{{ post.summary }}</p>
         </header>
       </div>
-      <footer class="columns">
+      <div class="columns">
         <div class="column">
           {{ formatDate(post.published) }}
         </div>
         <div class="column">
         </div>
-      </footer>
+      </div>
     </article>
 </template>
 

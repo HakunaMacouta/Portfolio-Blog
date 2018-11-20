@@ -2,7 +2,7 @@
   <div class="columns">
     <div class="column">
       <section class="section">
-        <h1>Recent posts</h1>
+        <h1 class="rgb-shift">Recent posts</h1>
         <div class="posts">
           <blog-thumb class="post-thumb" v-for="(post, index) in this.posts" :key="index" :post="post"></blog-thumb>
         </div>
@@ -11,10 +11,10 @@
     <div class="column is-one-quarter">
       <aside class="section">
         <div>
-          <h1>Everything</h1>
+          <h1 class="rgb-shift">Everything</h1>
         </div>
         <div>
-          <h1>Categories</h1>
+          <h1 class="rgb-shift">Categories</h1>
         </div>
       </aside>
     </div>

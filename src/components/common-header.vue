@@ -2,7 +2,7 @@
   <header>
     <div class="bg-img">
       <div class="welcome">
-        <p>- M a c o u t a -</p>
+        <p class="rgb-shift">- M a c o u t a -</p>
         <p>マカウタ</p>
         <p>Making stuff, trying to find my way...</p>
       </div>
@@ -19,11 +19,11 @@
         <div class="navbar-menu">
           <div class="navbar-start">
             <router-link to="/" class="navbar-item">HOME</router-link>
-            <div class="navbar-item is-hidden-mobile">/</div>
+            <div class="navbar-item is-hidden-tablet">/</div>
             <router-link to="/about" class="navbar-item">ABOUT</router-link>
-            <div class="navbar-item is-hidden-mobile">/</div>
+            <div class="navbar-item is-hidden-tablet">/</div>
             <router-link to="/work" class="navbar-item">WORK</router-link>
-            <div class="navbar-item is-hidden-mobile">/</div>
+            <div class="navbar-item is-hidden-tablet">/</div>
             <router-link to="/blog" class="navbar-item">BLOG</router-link>
           </div>
           <div class="navbar-end">
@@ -31,7 +31,7 @@
               <div class="navbar-item" :key="index">
                 <a class="svg-icon" :href="network.url"><img :src="network.path" :alt="network.alt"/></a>
               </div>
-              <div :key="index" v-if="index < $store.state.networks.length -1" class="navbar-item is-hidden-mobile">/</div>
+              <div v-if="index < $store.state.networks.length -1" class="navbar-item is-hidden-mobile">/</div>
             </template>
           </div>
         </div>
