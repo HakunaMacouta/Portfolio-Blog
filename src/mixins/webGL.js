@@ -1,5 +1,5 @@
-import { WebGLRenderer, CanvasRenderer, AxesHelper } from '../node_modules/three-full/builds/Three.es.min'
-let webGL = {
+import { WebGLRenderer, CanvasRenderer, AxesHelper } from '/node_modules/three-full/builds/Three.es.min'
+export default {
   methods: {
     rightRenderer: function(parameters) {
       let canvas = document.createElement('canvas')
@@ -16,5 +16,3 @@ let webGL = {
     }
   }
 }
-
-export { webGL }

@@ -15,13 +15,10 @@
 </template>
 
 <script>
-import { beautifyAuthor, prettyDate } from '../helpers'
+import { helpers } from '@/mixins'
 export default {
   name: 'blog-thumb',
   props: ['post'],
-  methods: {
-    beautifyAuthor,
-    prettyDate
-  }
+  mixins: [ helpers ]
 }
 </script>

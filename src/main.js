@@ -3,11 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import VueDisqus from 'vue-disqus'
+import Meta from 'vue-meta'
 
 import 'normalize.css'
 import '@/assets/scss/all.scss'
 
 Vue.use(VueDisqus)
+Vue.use(Meta)
 
 Vue.config.productionTip = false
 

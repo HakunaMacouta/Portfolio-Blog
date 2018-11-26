@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import CommonHeader from './components/common-header'
-import CommonFooter from './components/common-footer'
+import CommonHeader from './components/common/common-header'
+import CommonFooter from './components/common/common-footer'
 export default {
   components: { CommonFooter, CommonHeader },
   created() {

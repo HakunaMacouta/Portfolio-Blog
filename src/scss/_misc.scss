@@ -1,0 +1,17 @@
+* { margin:0; padding: 0; }
+//* { border:red 1px dotted; }
+html { overflow-y: auto }
+body, html { background: $background; min-height: 100% }
+
+.inline-list {
+  list-style: none;
+  li {
+    display: inline-block;
+  }
+}
+
+.rgb-shift {
+  color:white;
+  text-shadow: -.0625rem -.0625rem 0 #6BFFFF, .0625rem .0625rem 0 #FF819E;
+}
+

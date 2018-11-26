@@ -1,8 +1,5 @@
-$background: #191919;
-$pink: #ffb0fa;
-$salmon:#FF819E;
-$purple: #271034;
-$light-blue:#6BFFFF;
+/* Fonts */
+@font-face { font-family: 'VCR'; src: url('/fonts/VCR_OSD_MONO_1.001.ttf'); }
 
 /* Based on vapelot matplotlib extension for vaporwave * @link https://github.com/dantaki/vapeplot */
 $mallsoft-pink: #fbcff3;
@@ -28,3 +25,9 @@ $kosmic-pink:#e8d2ff;
 $kosmic-purple:#c1d1fd;
 $kosmic-light-purple:#d9e0fc;
 $kosmic-pink-salmon:#ffe0f1;
+
+$background: #191919;
+$pink: #ffb0fa;
+$salmon:#FF819E;
+$purple: #271034;
+$light-blue:#6BFFFF;

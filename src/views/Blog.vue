@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import BlogHeader from '../components/common-header'
-import BlogThumb from '../components/blog-thumb'
-import BlogAside from '../components/blog-aside'
+import BlogHeader from '../components/common/common-header'
+import BlogThumb from '../components/blog/blog-thumb'
+import BlogAside from '../components/blog/blog-aside'
 export default {
   name: 'blog',
   components: { BlogAside, BlogThumb, BlogHeader },
