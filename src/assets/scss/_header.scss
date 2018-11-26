@@ -1,8 +1,4 @@
-$blueShift: rgba(0,30,255,0.5);
-$blueShift: #C487C2;
-//$blueShift: rgba(30,242,241,0.8);
-$redShift: rgba(255,0,80,0.3);
-$redShift: #9efffd;
+@import "~aesthetic-css/src/variables";
 @mixin textGlitch($name, $intensity, $textColor, $background, $highlightColor1, $highlightColor2, $width, $height) {
 
   color: $textColor;
@@ -58,6 +54,8 @@ $redShift: #9efffd;
   display:flex;
 }
 .welcome {
+  background-color: $kosmic-salmon;
+  padding:15px;
   margin:auto;
   text-align:center;
   & p:nth-child(1) {
@@ -72,7 +70,7 @@ $redShift: #9efffd;
   & p:nth-child(3) {
     letter-spacing: 4px;
     font-family: Times New Roman, serif;
-    color: #ffb0fa;
+    color: $kosmic-blue;
   }
 }
 
@@ -110,7 +108,7 @@ $redShift: #9efffd;
   }
 }
 
-$navbar-background-color: $pink;
+$navbar-background-color: $aesthetic-arizona-pink;
 $navbar-item-color: #000000;
 $navbar-item-hover-color: $purple;
 $navbar-item-hover-background-color: $pink;

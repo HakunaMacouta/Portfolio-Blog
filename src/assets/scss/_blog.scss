@@ -4,10 +4,47 @@
 }
 
 .post-thumb {
+  position: relative;
+  width:30%;
+  //padding:10px;
+  margin:10px;
+  article {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.thumb-wrapper {
+  position: absolute;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
   width: 100%;
-  border: 1px dashed #cccccc;
-  padding:20px;
-  margin: 10px;
+  height: 100%;
+  background-color: rgba(255,255,255,0);
+  transition: background-color 1s;
+  &:hover {
+    background-color: rgba(0,0,0,0.6);
+    h1 {
+      color:white;
+      text-shadow: -.0625rem -.0625rem 0 #6BFFFF, .0625rem .0625rem 0 #FF819E;
+    }
+  }
+  h1 {
+    text-transform: uppercase;
+    font-weight: bolder;
+    margin:10px;
+  }
+}
+
+.thumb-info {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin:10px;
+  font-family: Times New Roman, serif;
 }
 
 h1 {

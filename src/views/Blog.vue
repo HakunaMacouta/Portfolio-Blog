@@ -8,15 +8,8 @@
         </div>
       </section>
     </div>
-    <div class="column is-one-quarter">
-      <aside class="section">
-        <div>
-          <h1 class="rgb-shift">Everything</h1>
-        </div>
-        <div>
-          <h1 class="rgb-shift">Categories</h1>
-        </div>
-      </aside>
+    <div class="column is-one-fifth">
+      <blog-aside></blog-aside>
     </div>
   </div>
 </template>
@@ -24,12 +17,23 @@
 <script>
 import BlogHeader from '../components/common-header'
 import BlogThumb from '../components/blog-thumb'
+import BlogAside from '../components/blog-aside'
 export default {
   name: 'blog',
-  components: { BlogThumb, BlogHeader },
+  components: { BlogAside, BlogThumb, BlogHeader },
+  data() {
+    return {
+      selectedCategories: [],
+      selectedTags: []
+    }
+  },
+  methods: {
+  },
   computed: {
     posts() {
-      return this.$store.state.posts
+      return this.$store.state.posts.filter((post, index, self) => {
+        return post
+      })
     }
   }
 }

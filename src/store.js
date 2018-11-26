@@ -20,11 +20,19 @@ export default new Vuex.Store({
         url: 'https://twitter.com/macouta_',
         alt: 'twitter' }
     ],
-    posts: []
+    posts: [],
+    categories: [],
+    tags: []
   },
   mutations: {
     blogPosts(state, posts) {
       state.posts = posts
+    },
+    blogCategories(state, categories) {
+      state.categories = categories
+    },
+    blogTags(state, tags) {
+      state.tags = tags
     }
   },
   actions: {
@@ -32,7 +40,28 @@ export default new Vuex.Store({
       return butter.post.list({ page: 1, page_size: 10 })
         .then(function(res) {
           context.commit('blogPosts', res.data.data)
+          let dates = []
+          res.data.data.forEach((el) => {
+            date
+          })
         }).catch(function(res) {
+          // TODO
+        })
+    },
+    blogCategories(context) {
+      return butter.category.list()
+        .then(function(res) {
+          context.commit('blogCategories', res.data.data)
+        }).catch(function(res) {
+          // TODO
+        })
+    },
+    blogTags(context) {
+      return butter.tag.list()
+        .then(function(res) {
+          context.commit('blogTags', res.data.data)
+        }).catch(function(res) {
+          // TODO
         })
     }
   },

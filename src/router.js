@@ -22,6 +22,16 @@ export default new Router({
       component: Blog
     },
     {
+      path: '/blog/category/:slug',
+      name: 'blog-category',
+      component: Blog
+    },
+    {
+      path: '/blog/tag/:slug',
+      name: 'blog-tags',
+      component: Blog
+    },
+    {
       path: '/blog/:slug',
       name: 'blog-post',
       component: BlogPost

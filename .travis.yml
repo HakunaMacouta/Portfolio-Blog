@@ -16,11 +16,11 @@ before_deploy:
 - sed -i -e "s/src=\\//src=/g" dist/index.html
 - sed -i -e "s/href=\\//href=/g" dist/index.html
 
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github-token: $GITHUB_KEY
-  keep-history: false
-  local-dir: '/dist'
-  on:
-    branch: dev
+#deploy:
+#  provider: pages
+#  skip_cleanup: true
+#  github-token: $GITHUB_KEY
+#  keep-history: false
+#  local-dir: '/dist'
+#  on:
+#    branch: dev

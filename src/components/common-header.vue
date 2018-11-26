@@ -7,7 +7,7 @@
         <p>Making stuff, trying to find my way...</p>
       </div>
     </div>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar aesthetic-arizona-pink-color" role="navigation" aria-label="main navigation">
       <div class="container">
         <div class="navbar-brand">
           <a role="button" @click="openMenuMobile()" class="navbar-burger burger" aria-label="menu" aria-expanded="false">

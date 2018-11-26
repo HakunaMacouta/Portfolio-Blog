@@ -15,6 +15,8 @@ export default {
   components: { CommonFooter, CommonHeader },
   created() {
     this.$store.dispatch('blogPosts')
+    this.$store.dispatch('blogCategories')
+    this.$store.dispatch('blogTags')
   }
 }
 </script>
