@@ -9,7 +9,7 @@
       </ul>
       <div class="powered-by">
         <p>Powered by :</p>
-        <a class="butter-logo" href="https://buttercms.com/"><img src="@/assets/images/butter-w.png" /></a>
+        <a class="butter-logo" href="https://buttercms.com/"><img src="/img/butter-w.png" /></a>
       </div>
       <div>
         © {{ new Date().getFullYear() }} Thomas Blanc

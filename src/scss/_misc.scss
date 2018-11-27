@@ -15,3 +15,14 @@ body, html { background: $background; min-height: 100% }
   text-shadow: -.0625rem -.0625rem 0 #6BFFFF, .0625rem .0625rem 0 #FF819E;
 }
 
+:root {
+  --animation-time: 2s;
+}
+.svg-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  animation: spin var(--animation-time) infinite linear;
+  &:hover {
+  }
+}
+

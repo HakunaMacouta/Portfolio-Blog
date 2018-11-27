@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { butter } from './config/butter'
+import butter from './config/butter'
 
 Vue.use(Vuex)
 
