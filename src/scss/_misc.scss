@@ -26,3 +26,13 @@ body, html { background: $background; min-height: 100% }
   }
 }
 
+.windows-95-container {
+  border: 2px solid #dbdbdb;
+  border-right-color: #535353;
+  border-bottom-color: #535353;
+  background-color: #bfbfbf;
+  //max-width: 600px;
+  font-size: 13px;
+  padding: 2px;
+}
+

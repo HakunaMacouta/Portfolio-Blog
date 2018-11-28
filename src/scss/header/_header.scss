@@ -8,10 +8,11 @@ Background
   background-size: cover;
   display: flex;
   &__info {
-    background-color: $kosmic-salmon;
-    padding: 15px;
     margin: auto;
     text-align: center;
+    p {
+      margin-bottom: 3px;
+    }
     &__pseudo {
       font-family: 'VCR', serif;
       font-size: 1.5rem;
@@ -23,7 +24,6 @@ Background
     &__catcher {
       letter-spacing: 4px;
       font-family: Times New Roman, serif;
-      color: $kosmic-blue;
     }
   }
 }
@@ -63,7 +63,7 @@ Navigation
       top: 46%;
       color: #fff;
       text-transform: uppercase;
-      font-family: 'Work sans', sans-serif;
+      font-family: 'VCR', sans-serif;
       font-weight: 300;
       letter-spacing: 4px;
       text-decoration: none;
@@ -72,7 +72,7 @@ Navigation
       font-size: 0.9rem;
       &::before {
         content: '';
-        width: 70px;
+        width: 5rem;
         height: 2px;
         background-color: #fff;
         position: absolute;
@@ -112,10 +112,18 @@ Navigation
         opacity: 1;
       }
     }
-    &--is-home { background-color: $colorItem1; }
-    &--is-about { background-color: $colorItem2; }
-    &--is-work { background-color: $colorItem3; }
-    &--is-blog { background-color: $colorItem4; }
+    &--is-home {
+      background: $colorItem1 url('/img/skeletons/tele.gif') center center;
+    }
+    &--is-about {
+      background: $colorItem2 url('/img/skeletons/disk.gif') center center;
+    }
+    &--is-work {
+      background: $colorItem3 url('/img/skeletons/computer.gif') center center;
+    }
+    &--is-blog {
+      background: $colorItem4 url('/img/skeletons/laptop.gif') center center;
+    }
   }
 }
 
@@ -164,6 +172,100 @@ Burger king
 }
 
 /* ====================================
+Windows95
+==================================== */
+.windows-95 {
+  margin: auto;
+  line-height: 1.1;
+  border: 2px solid #dbdbdb;
+  border-right-color: #535353;
+  border-bottom-color: #535353;
+  background-color: #bfbfbf;
+  //max-width: 600px;
+  font-size: 13px;
+  padding: 2px;
+  &__title {
+    background-color: #808080;
+    padding: 2px 4px 3px 4px;
+    position: relative;
+    h1 {
+      font-weight: bold;
+      color: #bcbcbc;
+      font-size: 13px;
+      margin: 0;
+      img {
+        width: 12px;
+        height: 12px;
+      }
+    }
+    button {
+      border: 2px solid;
+      border-bottom-color: #444;
+      border-right-color: #444;
+      border-left-color: #a6a6a6;
+      border-top-color: #a6a6a6;
+      background-color: #bfbfbf;
+      position: absolute;
+      font-size: 9px;
+      line-height: 0;
+      padding: 1px;
+      height: 15px;
+      width: 15px;
+      top: 2px;
+    }
+    &--minimize {
+      right: 34px;
+    }
+    &--expand {
+      right: 18px;
+    }
+    &--times {
+      right: 2px;
+    }
+  }
+  &__toolbar {
+    list-style: none;
+    padding: 2px 0;
+    margin: 0;
+    li {
+      display: inline-block;
+      padding: 0 5px;
+    }
+  }
+  &__inner {
+    border: 2px solid #808080;
+    border-right-color: #c7c7c7;
+    border-bottom-color: #c7c7c7;
+    background-color: #fff;
+    padding: 10px;
+    ul.icons {
+      list-style: none;
+      padding: 2px 0;
+      margin: 0;
+      li {
+        display: inline-block;
+        padding: 0 5px;
+      }
+    }
+  }
+  &__statusbar {
+    .left, .right {
+      border: 1px solid;
+      border-color: #888 #dadada #dadada #888;
+      display: inline-block;
+      padding: 0px 5px;
+      font-size: 11px;
+    }
+    .left {
+      width: 33%;
+    }
+    .right {
+      width: 66%;
+    }
+  }
+}
+
+/* ====================================
 Mobile
 ==================================== */
 @media (max-width: 640px) {
@@ -186,5 +288,4 @@ Mobile
   .open-overlay {
     right: 1rem;
   }
-
 }
