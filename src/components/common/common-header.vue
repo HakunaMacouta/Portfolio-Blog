@@ -1,6 +1,6 @@
 <template>
-  <header>
-    <div class="header">
+  <div>
+    <header class="header">
       <div class="windows-95">
         <div class="windows-95__title">
           <div class="windows-95__title--pull-right">
@@ -18,7 +18,7 @@
         </ul>
         <div class="windows-95__inner">
           <div class="header__info">
-            <p class="header__info__pseudo rgb-shift">- M a c o u t a -</p>
+            <p class="header__info__pseudo">- M a c o u t a -</p>
             <p class="header__info__japanese-pseudo">マクタ</p>
             <p class="header__info__catcher">Making stuff, trying to find my way.</p>
           </div>
@@ -28,96 +28,46 @@
           <div class="right">&nbsp;</div>
         </div>
       </div>
-      <div @click="toggleOverlay()" class="open-overlay">
-        <span class="open-overlay__bar"></span>
-        <span class="open-overlay__bar"></span>
-        <span class="open-overlay__bar"></span>
+    </header>
+    <div class="nav-container">
+      <div class="container">
+        <nav class="nav">
+          <router-link to="/" class="nav__item">Home</router-link>
+          <router-link to='/about' class="windows-95 nav__item">About</router-link>
+          <router-link to="/work" class="windows-95 nav__item">Work</router-link>
+          <router-link to="/blog" class="windows-95 nav__item">Blog</router-link>
+        </nav>
       </div>
     </div>
-    <div class="overlay-navigation">
-      <nav class="overlay-navigation__nav" role="navigation">
-        <ul class="overlay-navigation__list">
-          <li @click="toggleOverlay()" class="windows-95-container aesthetic-effect-crt overlay-navigation__item overlay-navigation__item--is-home">
-            <router-link class="rgb-shift" to="/" data-content="The beginning">H o m e</router-link>
-          </li>
-          <li @click="toggleOverlay()" class="windows-95-container aesthetic-effect-crt overlay-navigation__item overlay-navigation__item--is-about">
-            <router-link class="rgb-shift" to="/about" data-content="Curious?">A b o u t</router-link>
-          </li>
-          <li @click="toggleOverlay()" class="windows-95-container aesthetic-effect-crt overlay-navigation__item overlay-navigation__item--is-work">
-            <router-link class="rgb-shift" to="/work" data-content="Only the finest">W o r k s</router-link>
-          </li>
-          <li @click="toggleOverlay()" class="windows-95-container aesthetic-effect-crt overlay-navigation__item overlay-navigation__item--is-blog">
-            <router-link class="rgb-shift" to="/blog" data-content="Don't hesitate">B l o g</router-link>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  </div>
 </template>
 
 <script>
-import CommonTitle from './common-title'
 export default {
   name: 'commom-header',
-  components: { CommonTitle },
+  mounted() {
+    window.onscroll = this.toggleScrollHeader
+  },
   methods: {
-    toggleOverlay: function() {
-      let overlaynavigation = this.$el.querySelector('.overlay-navigation')
-      let navitem1 = this.$el.querySelector('.overlay-navigation__item--is-home')
-      let navitem2 = this.$el.querySelector('.overlay-navigation__item--is-about')
-      let navitem3 = this.$el.querySelector('.overlay-navigation__item--is-work')
-      let navitem4 = this.$el.querySelector('.overlay-navigation__item--is-blog')
-      let topbar = this.$el.querySelector('.open-overlay__bar:nth-of-type(1)')
-      let middlebar = this.$el.querySelector('.open-overlay__bar:nth-of-type(2)')
-      let bottombar = this.$el.querySelector('.open-overlay__bar:nth-of-type(3)')
-
-      overlaynavigation.classList.toggle('overlay-active')
-      if (overlaynavigation.classList.contains('overlay-active')) {
-        topbar.classList.remove('animate-out-top-bar')
-        topbar.classList.add('animate-top-bar')
-        middlebar.classList.remove('animate-out-middle-bar')
-        middlebar.classList.add('animate-middle-bar')
-        bottombar.classList.remove('animate-out-bottom-bar')
-        bottombar.classList.add('animate-bottom-bar')
-        overlaynavigation.classList.remove('overlay-slide-up')
-        overlaynavigation.classList.add('overlay-slide-down')
-        navitem1.classList.remove('slide-in-nav-item-reverse')
-        navitem1.classList.add('slide-in-nav-item')
-        navitem2.classList.remove('slide-in-nav-item-delay-1-reverse')
-        navitem2.classList.add('slide-in-nav-item-delay-1')
-        navitem3.classList.remove('slide-in-nav-item-delay-2-reverse')
-        navitem3.classList.add('slide-in-nav-item-delay-2')
-        navitem4.classList.remove('slide-in-nav-item-delay-3-reverse')
-        navitem4.classList.add('slide-in-nav-item-delay-3')
+    toggleScrollHeader(event) {
+      let navbar = this.$el.querySelector('.nav-container')
+      // let sticky = this.findPos(navbar)
+      if (window.pageYOffset >= 380) {
+        navbar.classList.add('nav-container--sticky')
       } else {
-        topbar.classList.remove('animate-top-bar')
-        topbar.classList.add('animate-out-top-bar')
-        middlebar.classList.remove('animate-middle-bar')
-        middlebar.classList.add('animate-out-middle-bar')
-        bottombar.classList.remove('animate-bottom-bar')
-        bottombar.classList.add('animate-out-bottom-bar')
-        overlaynavigation.classList.remove('overlay-slide-down')
-        overlaynavigation.classList.add('overlay-slide-up')
-        navitem1.classList.remove('slide-in-nav-item')
-        navitem1.classList.add('slide-in-nav-item-reverse')
-        navitem2.classList.remove('slide-in-nav-item-delay-1')
-        navitem2.classList.add('slide-in-nav-item-delay-1-reverse')
-        navitem3.classList.remove('slide-in-nav-item-delay-2')
-        navitem3.classList.add('slide-in-nav-item-delay-2-reverse')
-        navitem4.classList.remove('slide-in-nav-item-delay-3')
-        navitem4.classList.add('slide-in-nav-item-delay-3-reverse')
+        navbar.classList.remove('nav-container--sticky')
       }
     },
-    setDurationProperty() {
-      let icons = this.$el.querySelectorAll('.svg-icon')
-      icons.forEach(function(icon) {
-        let rnd = 8 - ((Math.random() * (4)) + -2)
-        icon.style.setProperty('--animation-time', rnd + 's')
-      })
+    findPos(obj) {
+      let curtop = 0
+      if (obj.offsetParent) {
+        curtop = obj.offsetTop
+        while (obj = obj.offsetParent) {
+          curtop += obj.offsetTop
+        }
+      }
+      return curtop
     }
-  },
-  mounted() {
-    this.setDurationProperty()
   }
 }
 </script>

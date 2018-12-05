@@ -1,28 +1,18 @@
-footer {
-  padding:10px 0;
+.footer {
+  padding:2rem 0;
+  display: flex;
   font-family: 'VCR', serif;
-  //background: url(https://media.giphy.com/media/xT77YdUbID5J6oRtYI/giphy.gif) center center; //waves
-  //background: url(https://media.giphy.com/media/xTka05eaWBCJqg9Tig/giphy.gif) center center; //pastel
   background: url(https://media.giphy.com/media/3o6ZtmDdoNh2WZOMlG/giphy.gif) center center; //bubble  filter:blur(1px);
   background-size:cover;
-
-  //box-shadow:
-  //    0 0 0 5px $background,
-  //    0 0 0 15px $pink,
-  //    0 0 0 20px $background,
-  //    0 0 0 27px $pink,
-  //    0 0 0 32px $background,
-  //    0 0 0 36px $pink;
   a {
     display: block;
     margin:0 auto;
   }
+  &__powered-by {
+    margin: 0 auto;
+    width: 80%;
+  }
 }
 
-.powered-by {
-}
-.butter-logo {
-  margin:0 auto;
-  width:20%;
-}
+
 

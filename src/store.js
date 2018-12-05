@@ -37,7 +37,7 @@ export default new Vuex.Store({
   },
   actions: {
     blogPosts(context) {
-      return butter.post.list({ page: 1, page_size: 10 })
+      return butter.post.list({ page: 1, page_size: 10, exclude_body: true })
         .then(function(res) {
           context.commit('blogPosts', res.data.data)
         }).catch(function(res) {

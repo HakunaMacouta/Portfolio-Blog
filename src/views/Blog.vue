@@ -1,16 +1,25 @@
 <template>
-  <div class="columns">
-    <div class="column">
-      <section class="section">
-        <h1 class="rgb-shift">Recent posts</h1>
-        <div class="posts">
-          <blog-thumb class="post-thumb" v-for="(post, index) in this.posts" :key="index" :post="post"></blog-thumb>
+  <div class="container">
+    <div class="blog-nav columns">
+      <div class="column">
+        <img src="/img/magritte.gif" alt="magritte gif" />
+        <div class="blog-nav__info">
+          <h1>blog</h1>
+          <p>A game, art, personnal blog</p>
         </div>
-      </section>
+      </div>
+      <div class="column">
+      cc
+      </div>
+      <div class="column">
+        cc
+      </div>
     </div>
-    <div class="column is-one-fifth">
-      <blog-aside></blog-aside>
+    <div class="thumblist-title">
+      <span class="thumblist-title__info">Recents</span>
+      <b class="thumblist-title__number">{{ postsNumber }}</b>
     </div>
+    <blog-thumb class="post-thumb" v-for="(post, index) in this.posts" :key="index" :post="post"></blog-thumb>
   </div>
 </template>
 
@@ -34,6 +43,9 @@ export default {
       return this.$store.state.posts.filter((post, index, self) => {
         return post
       })
+    },
+    postsNumber() {
+      return this.posts.length < 10 ? '0' + this.posts.length : this.posts.length
     }
   }
 }

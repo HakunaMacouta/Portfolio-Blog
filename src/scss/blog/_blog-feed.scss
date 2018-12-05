@@ -1,0 +1,44 @@
+.categorytitle { }
+.categorytitle span {  }
+.categorytitle b {  }
+.categorytitle b:before {  }
+
+.thumblist-title {
+  margin: 60px 50px;
+  color: #f3f3f3;
+  font-family: "Roboto Mono", sans-serif;
+  font-size: 9pt;
+  letter-spacing: 1px;
+  &__info {
+    padding: 3px 8px 5px 8px;
+    border: 2px solid #bbb;
+  }
+  &__number {
+    float: right;
+    font-family: "Inconsolata", sans-serif;
+    font-size: 13pt;
+    color: #969cad;
+    &:before {
+      content:" ";
+      border-bottom: 1px solid #616782;
+      width: 650px; display: inline-block;
+      margin: 0px 50px;
+      position: relative; top: -3px;
+    }
+  }
+}
+
+.blog-nav {
+  &__info {
+    position: relative;
+    top:0;
+    width:100%;
+    height:100%;
+    padding:50px;
+    border: 2px solid #bbb;
+    background:rgba(2,11,28,0.5);
+    margin:0 auto;
+    text-align: center;
+    vertical-align: center;
+  }
+}

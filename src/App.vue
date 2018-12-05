@@ -1,9 +1,9 @@
 <template>
   <div>
     <common-header></common-header>
-    <div>
+    <main>
       <router-view/>
-    </div>
+    </main>
     <common-footer></common-footer>
   </div>
 </template>
@@ -17,6 +17,6 @@ export default {
     this.$store.dispatch('blogPosts')
     this.$store.dispatch('blogCategories')
     this.$store.dispatch('blogTags')
-  }
+  },
 }
 </script>
