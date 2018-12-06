@@ -35,8 +35,8 @@ export default new Router({
       component: Blog
     },
     {
-      path: '/blog/tag/:slug',
-      name: 'blog-tags',
+      path: '/blog/month/:slug',
+      name: 'blog-month',
       component: Blog
     },
     {

@@ -20,6 +20,15 @@ main { background: url(https://jeffbredenkamp.neocities.org/bg_grey-min.png) rep
   text-shadow: -.0625rem -.0625rem 0 #6BFFFF, .0625rem .0625rem 0 #FF819E;
 }
 
+.boxed-text {
+  font-family: "Roboto Mono", sans-serif;
+  font-size: 9pt;
+  letter-spacing: 1px;
+  color: #bbb;
+  padding: 3px 8px 5px 8px;
+  border: 2px solid #bbb;
+}
+
 :root {
   --animation-time: 2s;
 }
