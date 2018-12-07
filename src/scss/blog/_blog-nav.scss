@@ -1,0 +1,84 @@
+.blog-nav {
+  margin-top:2rem;
+  background: rgba(17,21,30,0.65);
+  //&:before{ content: " "; width: 30px; height: 50px; border-top: 6px solid #bbb; border-left: 6px solid #bbb; display: block; float: left; position: relative; top: -20px; left: -20px; box-sizing: border-box; opacity: 0.75; }
+  //&:after { content: " "; width: 30px; height: 50px; border-bottom: 6px solid #bbb; border-right: 6px solid #bbb; display: block; float: right; position: relative; bottom: 0px; box-sizing: border-box; opacity: 0.75; }
+  &__title-container {
+    background: url('/img/magritte.gif') center center;
+    background-size: cover;
+    padding:3rem;
+  }
+  &__title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding:2.5rem;
+    border: 2px solid #bbb;
+    background:rgba(2,11,28,0.8);
+    text-align: center;
+    color: #bbb;
+    letter-spacing: 2px;
+    font-size: 0.7rem;
+    h1 {
+      text-transform: uppercase;
+      font-size: 30pt;
+      font-weight: 700;
+      margin: 0;
+      padding: 0;
+      letter-spacing: 0px;
+      color: white;
+      font-style: italic;
+    }
+  }
+  &__ad-container {
+    padding:1.5rem;
+    img {
+      padding:3px;
+      border: solid 2px #bbb
+    }
+  }
+  &__categories-container {
+    padding:2rem;
+    .columns {
+      height: 100%;
+      max-height: 100%;
+    }
+  }
+  &__intro {
+    overflow-y: scroll;
+    background-color: #171a21;
+    border: 20px solid #171a21;
+    color: #bbb;
+    font-size: 11px;
+    padding-right: 10px;
+    margin-bottom:1rem;
+  }
+}
+
+.route-container {
+  position: relative;
+  background: #0d0f15;
+  padding: 1rem;
+  margin-top:1rem;
+  overflow-y: auto;
+  height: 100%;
+  max-height: 100%;
+  &__list {
+    overflow-y: auto;
+    height: 100%;
+    max-height: 100%;
+  }
+  &__item {
+    margin:0 0.3rem;
+    a {
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      color: #49576d;
+      &:hover {
+        color: #586c8e
+      }
+    }
+  }
+}

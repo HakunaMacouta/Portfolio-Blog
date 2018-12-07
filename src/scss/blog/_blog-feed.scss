@@ -1,103 +1,16 @@
-.categorytitle { }
-.categorytitle span {  }
-.categorytitle b {  }
-.categorytitle b:before {  }
-
 .thumblist-title {
   margin: 60px 50px;
-  color: #f3f3f3;
-  font-family: "Roboto Mono", sans-serif;
-  font-size: 9pt;
-  letter-spacing: 1px;
+  display:flex;
+  hr {
+    position: relative;
+    background-color:#bbb;
+    height: 1px;
+    top: 13px;
+    width:100%;
+    margin:0 30px;
+  }
   &__number {
-    float: right;
-    font-family: "Inconsolata", sans-serif;
     font-size: 13pt;
     color: #969cad;
-    &:before {
-      content:" ";
-      border-bottom: 1px solid #616782;
-      width: 650px; display: inline-block;
-      margin: 0px 50px;
-      position: relative; top: -3px;
-    }
-  }
-}
-
-.blog-nav {
-  margin-top:2rem;
-  background: rgba(17,21,30,0.65);
-  &__title-container {
-    background: url('/img/magritte.gif') center center;
-    background-size: cover;
-    padding:3rem;
-  }
-  &__title {
-    width: 100%;
-    height: 100%;
-    padding:2.5rem;
-    border: 2px solid #bbb;
-    background:rgba(2,11,28,0.5);
-    text-align: center;
-    vertical-align: center;
-    color: #bbb;
-    letter-spacing: 3px;
-    font-size: 0.7rem;
-    h1 {
-      text-transform: uppercase;
-      font-size: 30pt;
-      font-weight: 700;
-      margin: 0;
-      padding: 0;
-      letter-spacing: 0px;
-      color: white;
-      font-style: italic;
-    }
-  }
-  &__ad-container {
-    background: url('/img/ad.gif') bottom center;
-    background-size: cover;
-    &:after {
-      content:'';
-      display: block;
-      padding-bottom: 100%;
-    }
-  }
-  &__categories-container {
-    padding:2rem;
-    .columns {
-      height: 100%;
-      max-height: 100%;
-    }
-  }
-  &__container {
-    position: relative;
-    background: #0d0f15;
-    padding: 1rem;
-    margin-top:1rem;
-    height: 100%;
-    overflow-y: auto;
-    max-height: 240px;
-  }
-  &__list {
-    overflow-y: auto;
-    height: 100%;
-    max-height: 100%;
-    li {
-      font-family: "Roboto Mono", sans-serif;
-      font-size: 12px;
-      color: #586c8e;
-      margin:0 0.3rem;
-    }
-  }
-  &__intro {
-    overflow-y: scroll;
-    background-color: #171a21;
-    border: 20px solid #171a21;
-    font-family: "Roboto Mono", sans-serif;
-    color: #bbb;
-    font-size: 11px;
-    padding-right: 10px;
-    margin-bottom:1rem;
   }
 }

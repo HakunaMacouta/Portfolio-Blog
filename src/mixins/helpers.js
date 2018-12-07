@@ -21,6 +21,9 @@ export default {
     },
     beautifyAuthor(author) {
       return author.first_name + ' ' + author.last_name
+    },
+    prettyNumber(number) {
+      return number < 10 ? '0' + number : number
     }
   }
 }

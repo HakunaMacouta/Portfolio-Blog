@@ -169,7 +169,7 @@ export default {
     z-index: 1;
     letter-spacing: 1px;
     font-size:18px;
-    font-family: 'Welbut', Helvetica, sans-serif;
+    font-family: 'Welbut', Helvetica, serif;
     & .input { animation: textShadow 5s infinite; }
     & .nav { animation: textShadow 10s infinite; }
     & .call-to-action { animation: textShadow 20s infinite; }

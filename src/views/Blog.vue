@@ -1,58 +1,32 @@
 <template>
   <div class="container">
-    <div class="blog-nav columns">
-      <div class="column blog-nav__title-container">
-          <div class="blog-nav__title">
-            <h1>blog</h1>
-            <p>A game, art, personnal blog</p>
-          </div>
-      </div>
-      <div class="column blog-nav__categories-container">
-        <div class="columns">
-          <div class="column">
-            <span class="boxed-text">Chrono</span>
-            <div class="blog-nav__container">
-              <ul class="blog-nav__list">
-                <li v-for="(month, index) in this.months" :key="index">
-                  {{ month }}
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="column">
-            <span class="boxed-text">Categories</span>
-            <div class="blog-nav__container">
-              <ul class="blog-nav__list">
-                <li v-for="(category, index) in this.$store.state.categories" :key="index">
-                  <router-link :to="'/blog/category/' + category.slug">{{ category.name }}</router-link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column blog-nav__ad-container is-hidden-mobile">
-      </div>
-    </div>
+    <blog-nav></blog-nav>
     <div class="thumblist-title">
-      <span class="boxed-text">Recents</span>
-      <b class="thumblist-title__number">{{ postsNumber }}</b>
+      <span class="boxed-text">{{ title }}</span>
+      <hr />
+      <b class="thumblist-title__number">{{ prettyNumber(this.posts.length) }}</b>
     </div>
-    <blog-thumb class="post-thumb" v-for="(post, index) in this.posts" :key="index" :post="post"></blog-thumb>
+    <blog-thumb v-for="(post, index) in this.posts" :key="index" :post="post"></blog-thumb>
+    <div class="thumblist-title">
+      <!--<span class="boxed-text"></span>-->
+      <hr />
+      <span class="thumblist-title__number is-centered">{{ prettyNumber(1) }}</span>
+      <hr />
+      <span class="boxed-text">Next</span>
+    </div>
   </div>
 </template>
 
 <script>
 import BlogThumb from '../components/blog/blog-thumb'
 import helpers from '../mixins/helpers'
+import BlogNav from '../components/blog/blog-nav'
 export default {
   name: 'blog',
   mixins: [ helpers ],
-  components: { BlogThumb },
+  components: { BlogNav, BlogThumb },
   data() {
     return {
-      selectedCategories: [],
-      selectedTags: []
     }
   },
   methods: {
@@ -63,20 +37,13 @@ export default {
         return post
       })
     },
-    months() {
-      return [...new Set(this.posts.map(item => {
-        let date = new Date(item.published)
-        return {
-          'date': date.toLocaleString('en-us', {
-            month: 'short',
-            year: 'numeric'
-          }),
-          value: 0
-        }
-      }))]
-    },
-    postsNumber() {
-      return this.posts.length < 10 ? '0' + this.posts.length : this.posts.length
+    title() {
+      return (this.$route.name === 'blog-month' ||
+      this.$route.name === 'blog-category')
+        ? (this.$route.name === 'blog-month')
+          ? this.$route.params.slug.replace(/-/g, ' ')
+          : this.$route.params.slug
+        : 'Recents'
     }
   }
 }

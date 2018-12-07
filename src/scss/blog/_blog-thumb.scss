@@ -1,0 +1,108 @@
+.thumb {
+  width: 100%;
+  margin:0;
+  &__image {
+    vertical-align: bottom;
+    text-align: right;
+    height: 150px;
+    overflow: hidden;
+    background-size: cover;
+    a {
+      color: #bbbbbb;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0px;
+      font-size: 30pt;
+      position: relative;
+      bottom: -11px;
+      right: 20px;
+      font-style: italic;
+      text-shadow: 0px 0px 5px #11151e;
+      &:hover {
+        color: #4f6a7d;
+      }
+    }
+  }
+  &__strip {
+    top: -20px;
+    background: rgba(17,20,25,0.85);
+    width: 100%;
+    padding: 0px 30px;
+    height: 80px;
+    vertical-align: bottom;
+    color: #f3f3f3;
+    font-size: 7pt;
+    text-align: left;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    a {
+      position: relative;
+      top:72px;
+      border: 2px solid #bbb;
+      font-size: 8pt;
+      text-align: center;
+      letter-spacing: 0px;
+      font-style: normal;
+      text-transform: none;
+    }
+  }
+  &__info {
+    display: table-cell;
+    vertical-align: bottom;
+    padding: 20px 20px 0px 20px;
+    width: 460px;
+    overflow: visible;
+    text-align: right;
+  }
+  &__ref {
+    b {
+      font-size: 7pt;
+      color: #616782;
+      font-weight: 700!important;
+      text-transform: lowercase;
+      font-style: italic;
+      border-bottom: 1px solid #616782;
+      padding-bottom: 5px;
+      margin: 0px 5px;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 150px;
+    }
+  }
+  &__description {
+    color: #bbb;
+    font-size: 8pt;
+    text-align: left;
+    padding: 20px 10px 0px 10px;
+    line-height: 10pt;
+  }
+  &__summary {
+    overflow-y: auto;
+    height: 80px;
+  }
+  &__categories {
+    width: 900px;
+    position: absolute;
+    font-size: 9px;
+    color: #f3f3f3;
+    text-align: center;
+    margin-left: -480px;
+    margin-top: -120px;
+    z-index: 10;
+    text-transform: uppercase;
+    vertical-align: top;
+    height: 15px;
+    a {
+      color: #bbb;
+      font-family: Arimo;
+      letter-spacing: 1px;
+      margin: 0px 10px;
+      background: rgba(4,7,12,0.75);
+      font-weight: 700!important;
+      padding: 5px 5px 4px 6px;
+      &:hover { color: #4f6a7d; }
+    }
+  }
+}
